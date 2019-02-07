@@ -5,8 +5,10 @@
     <link rel="stylesheet" type="text/css" href="home.css"/>
     <title>Title</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="application/javascript" src="home.js"></script>
 </head>
 <body>
 
@@ -26,22 +28,22 @@
         <table>
             <tr>
                 <td>
-                    <button ng-click="toggleDice()">Dice</button>
+                    <button ng-click="toggle('dice')">Dice</button>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button ng-click="toggleStory()">Story Notes</button>
+                    <button ng-click="toggle('story')">Story Notes</button>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button ng-click="toggleChara()">Character Generator</button>
+                    <button ng-click="toggle('chara')">Character Generator</button>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button ng-click="toggleMonst()">Monster Generator</button>
+                    <button ng-click="toggle('monst')">Monster Generator</button>
                 </td>
             </tr>
         </table>
@@ -55,49 +57,5 @@
         <div ng-include="'MonsterGen.html'" ng-hide="monst"></div>
     </div>
 </div>
-
-<script>
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope){
-    $scope.dice = true;
-    $scope.chara = true;
-    $scope.monst = true;
-    $scope.story = true;
-
-    $scope.toggleDice = function () {
-        if($scope.dice == false) {
-            $scope.dice = true;
-        } else {
-            $scope.dice = false;
-        }
-    }
-
-    $scope.toggleChara = function () {
-        if($scope.chara == false) {
-            $scope.chara = true;
-        } else {
-            $scope.chara = false;
-        }
-    }
-
-    $scope.toggleMonst = function () {
-        if($scope.monst == false) {
-            $scope.monst = true;
-        } else {
-            $scope.monst = false;
-        }
-    }
-
-    $scope.toggleStory = function () {
-        if($scope.story == false) {
-            $scope.story = true;
-        } else {
-            $scope.story = false;
-        }
-    }
-
-});
-</script>
-
 </body>
 </html>
