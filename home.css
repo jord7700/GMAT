@@ -2,46 +2,108 @@ table, th, tr{
     width: 10px;
     height: 10px;
     border: 10px black;
-    padding: 10px;
+	
 }
 
-button{
+/*button{
     padding: 10px;
-    width: 100px;
+    width: 80px;
     height: auto;
+	background-color: #63a4b0;
+	border-radius: 15px;
+	width: 80px;
+	padding: 20px; 
+	height: auto; 
+	border-style: groove;
+	
 }
+}
+
+.buttonlinks {
+	text-decoration: none;
+	color: black;
+}*/
 
 .menu{
-    width: 20%;
-    height: 100%;
+    margin: auto;
     float: left;
-    background-color: mediumpurple;
-    padding-bottom: 500em;
-    margin-bottom: -500em;
+    background-color: #443635;
+	padding-bottom: 11.8em;
+	position: fixed;
+	border: 3px outset green;
+	
+	
 }
 
+<<<<<<< HEAD
 .options {
+=======
+.outline {
+	background-color: black;
+}
+.options{
+>>>>>>> 0ad6681f1528d341294e2955523db914ba34671e
     border: 3px;
     width: 100%;
-    padding-top: 20px;
-    float: top;
-    background-color: yellow;
+    float: right;
+    background-color: #1c6a7c;
     text-align: center;
 }
 
 .main{
     border: 3px;
     float: left;
-    width: 80%;
-    height: auto;
+    width: 100%;
+    height: 20em;
     text-align: center;
-    background-color: antiquewhite;
-    padding-bottom: 500em;
-    margin-bottom: -500em;
+    background-color: #8ecec6;
+    
 
 }
 
+
+
 .wrap{
-    overflow: hidden;
     width: 100%;
+	overflow: hidden; 
+}
+
+.icons {
+	
+  border-radius: 5px;
+  background-color: #3d4ee7;
+  border: none;
+  color: black;
+  text-align: center;
+  padding-right: 5px;
+  padding-left: 0px;
+  margin-left: 0px;
+  width: 80px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+ .icons span {
+  cursor: pointer;
+  display: ;
+  position: relative;
+  transition: 0.5s;
+}
+.icons span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.icons:hover span {
+  padding-right: 25px;
+}
+
+.icons:hover span:after {
+  opacity: 1;
+  right: 0;
 }

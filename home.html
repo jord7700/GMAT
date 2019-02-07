@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head >
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="home.css"/>
-    <title>Title</title>
+    <title>GMAT</title>
 
    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script type="application/javascript" src="home.js"></script>
 </head>
-<body>
+<body class = "outline">
 
 <div class="wrap" ng-app="myApp" ng-controller="myCtrl">
 
@@ -28,22 +28,22 @@
         <table>
             <tr>
                 <td>
-                    <button ng-click="toggle('dice')">Dice</button>
+                    <button class = "icons" ng-click="toggle('dice')"><img src = "png/dice.png" ><span></span></button>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button ng-click="toggle('story')">Story Notes</button>
+                    <button class = "icons" ng-click="toggle('story')"><img src = "png/storyline.png" ><span></span></button>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button ng-click="toggle('chara')">Character Generator</button>
+                    <button class = "icons" ng-click="toggle('chara')"><img src  = "png/character.png"><span></span></button>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button ng-click="toggle('monst')">Monster Generator</button>
+                    <button class = "icons" ng-click="toggle('monst')"><img src = "png/monster.png"><span></span></button>
                 </td>
             </tr>
         </table>
