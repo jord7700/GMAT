@@ -1,103 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head >
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="home.css"/>
-    <title>Title</title>
+    <title>GMAT</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="application/javascript" src="home.js"></script>
 </head>
-<body>
+<body class = "outline">
 
 <div class="wrap" ng-app="myApp" ng-controller="myCtrl">
 
     <div class="options">
-        <table>
-            <tr>File</tr>
-            <tr>View</tr>
-            <tr>Window</tr>
-            <tr>Help</tr>
-            <tr>Exit</tr>
-        </table>
+        <select class = "optionsTabs">
+            <option value = "file">File</option>
+            <option value = "view">View</option>
+            <option value = "window">Window</option>
+            <option value = "help">Help</option>
+            <option value = "exit">Exit</option>
+        </select>
     </div>
-
-    <div class="menu">
+    
+    <div class="menu" id = "menuSideNav">
         <table>
             <tr>
                 <td>
-                    <button ng-click="toggleDice()">Dice</button>
+                    <button class = "icons" ng-click="toggle('dice')"><img src = "png/dice.png" ><span></span></button>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button ng-click="toggleStory()">Story Notes</button>
+                    <button class = "icons" ng-click="toggle('story')"><img src = "png/storyline.png" ><span></span></button>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button ng-click="toggleChara()">Character Generator</button>
+                    <button class = "icons" ng-click="toggle('chara')"><img src  = "png/character.png"><span></span></button>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button ng-click="toggleMonst()">Monster Generator</button>
+                    <button class = "icons" ng-click="toggle('monst')"><img src = "png/monster.png"><span></span></button>
                 </td>
             </tr>
+            <!--
+            <tr>
+                <td>
+                    <button class = "icons" ng-click="toggle('notes')"><img src = "NEEDS FILLED"> notes<span></span></button>
+                </td>
+            </tr>
+            -->
         </table>
     </div>
 
     <div class="main">
-        <p>main</p>
+        <!--<p>main</p>-->
         <div ng-include="'Dice.html'" ng-hide="dice"></div>
         <div ng-include="'Story.html'" ng-hide="story"></div>
         <div ng-include="'CharGen.html'" ng-hide="chara"></div>
         <div ng-include="'MonsterGen.html'" ng-hide="monst"></div>
     </div>
 </div>
-
-<script>
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope){
-    $scope.dice = true;
-    $scope.chara = true;
-    $scope.monst = true;
-    $scope.story = true;
-
-    $scope.toggleDice = function () {
-        if($scope.dice == false) {
-            $scope.dice = true;
-        } else {
-            $scope.dice = false;
-        }
-    }
-
-    $scope.toggleChara = function () {
-        if($scope.chara == false) {
-            $scope.chara = true;
-        } else {
-            $scope.chara = false;
-        }
-    }
-
-    $scope.toggleMonst = function () {
-        if($scope.monst == false) {
-            $scope.monst = true;
-        } else {
-            $scope.monst = false;
-        }
-    }
-
-    $scope.toggleStory = function () {
-        if($scope.story == false) {
-            $scope.story = true;
-        } else {
-            $scope.story = false;
-        }
-    }
-
-});
-</script>
-
 </body>
 </html>

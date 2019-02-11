@@ -1,0 +1,22 @@
+.dice {
+    position: relative;
+    top:10px;
+    background-color:blueviolet;
+    border-radius: 15px;
+    width:auto;
+    height: auto;
+    color: greenyellow;
+}
+
+.result {
+    padding-top: 20px;
+    margin-top: 20px;
+    margin: 10px; 
+    font-family:cursive;
+    font-size: 80px;
+}
+
+div {
+    padding-bottom: 10px;
+
+}

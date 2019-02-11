@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="Story.css"/>
     <meta charset="UTF-8">
     <title>story</title>
 </head>
-<body>
-    <p>story</p>
+<body ng-controller="storyCtrl">
+    <p>This is where you put your notes</p>
+    <textarea ng-model="noteText">{{noteText}}</textarea>
+    <button ng-click="sendText()">a Button</button>
 </body>
 </html>
