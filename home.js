@@ -22,22 +22,7 @@ app.controller('myCtrl', function($scope) {
             $scope.story = false;
         }
     }
-    $scope.die20 = function(){
-        $scope.results = Math.floor(Math.random() * 20 + 1);
-    }
-    $scope.die12 = function(){
-        $scope.results = Math.floor(Math.random() * 12 + 1);
-    }
-    $scope.die10 = function(){
-        $scope.results = Math.floor(Math.random() * 10 + 1);
-    }
-    $scope.die8 = function(){
-        $scope.results = Math.floor(Math.random() * 8 + 1);
-    }
-    $scope.die6 = function(){
-        $scope.results = Math.floor(Math.random() * 6 + 1);
-    }
-    $scope.die4 = function() {
-        $scope.results = Math.floor(Math.random() * 4 + 1);
+    $scope.dieRoll = function(diceValue) {
+        $scope.results = Math.floor(Math.random() * diceValue + 1);
     }
 });
