@@ -3,8 +3,8 @@
     top:10px;
     background-color:blueviolet;
     border-radius: 15px;
-    width:70px;
-    height: 70px;
+    width:auto;
+    height: auto;
     color: greenyellow;
 }
 
@@ -14,4 +14,9 @@
     margin: 10px; 
     font-family:cursive;
     font-size: 80px;
+}
+
+div {
+    padding-bottom: 10px;
+
 }
