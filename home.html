@@ -15,16 +15,16 @@
 <div class="wrap" ng-app="myApp" ng-controller="myCtrl">
 
     <div class="options">
-        <table>
-            <tr>File</tr>
-            <tr>View</tr>
-            <tr>Window</tr>
-            <tr>Help</tr>
-            <tr>Exit</tr>
-        </table>
+        <select class = "optionsTabs">
+            <option value = "file">File</option>
+            <option value = "view">View</option>
+            <option value = "window">Window</option>
+            <option value = "help">Help</option>
+            <option value = "exit">Exit</option>
+        </select>
     </div>
-
-    <div class="menu">
+    
+    <div class="menu" id = "menuSideNav">
         <table>
             <tr>
                 <td>
@@ -50,7 +50,7 @@
     </div>
 
     <div class="main">
-        <p>main</p>
+        <!--<p>main</p>-->
         <div ng-include="'Dice.html'" ng-hide="dice"></div>
         <div ng-include="'Story.html'" ng-hide="story"></div>
         <div ng-include="'CharGen.html'" ng-hide="chara"></div>

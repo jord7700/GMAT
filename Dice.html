@@ -2,12 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="Dice.css"/>
     <title>dice</title>
 </head>
 <body>
     <div>
-        <button ng-click="die20()">1d20</button>
-        <p>{{results}}</p>
+        <button class = "dice" ng-click="die20()"><img src = "png/dice.png"></br>Roll D20</button>
+        <button class = "dice" ng-click="die12()"><img src = "png/dice.png"></br>Roll D12</button>
+        <button class = "dice" ng-click="die10()"><img src = "png/dice.png"></br>Roll D10</button>
+        <button class = "dice" ng-click="die8()"><img src = "png/dice.png"></br>Roll D8</button>
+        <button class = "dice" ng-click="die6()"><img src = "png/dice.png"></br>Roll D6</button>
+        <button class = "dice" ng-click="die4()"><img src = "png/dice.png"></br>Roll D4</button>
+        <p class = "result">{{results}}</p>
     </div>
 </body>
 </html>
