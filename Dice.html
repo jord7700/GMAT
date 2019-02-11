@@ -6,14 +6,15 @@
     <title>dice</title>
 </head>
 <body>
-    <div>
-        <button class = "dice" ng-click="die20()"><img src = "png/dice.png"></br>Roll D20</button>
-        <button class = "dice" ng-click="die12()"><img src = "png/dice.png"></br>Roll D12</button>
-        <button class = "dice" ng-click="die10()"><img src = "png/dice.png"></br>Roll D10</button>
-        <button class = "dice" ng-click="die8()"><img src = "png/dice.png"></br>Roll D8</button>
-        <button class = "dice" ng-click="die6()"><img src = "png/dice.png"></br>Roll D6</button>
-        <button class = "dice" ng-click="die4()"><img src = "png/dice.png"></br>Roll D4</button>
+  <div>
+        <button class = "dice" ng-click="dieRoll(20)"><img src = "png/dice.png"></br>Roll D20</button>
+        <button class = "dice" ng-click="dieRoll(12)"><img src = "png/dice.png"></br>Roll D12</button>
+        <button class = "dice" ng-click="dieRoll(10)"><img src = "png/dice.png"></br>Roll D10</button>
+        <button class = "dice" ng-click="dieRoll(8)"><img src = "png/dice.png"></br>Roll D8</button>
+        <button class = "dice" ng-click="dieRoll(6)"><img src = "png/dice.png"></br>Roll D6</button>
+        <button class = "dice" ng-click="dieRoll(4)"><img src = "png/dice.png"></br>Roll D4</button>
         <p class = "result">{{results}}</p>
-    </div>
+	<input type="text" ng-model="diceValue">
+  </div>
 </body>
 </html>
