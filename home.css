@@ -28,25 +28,25 @@ table, th, tr{
     margin: auto;
     float: left;
     background-color: #443635;
-	padding-bottom: 11.8em;
 	position: fixed;
 	border: 3px outset green;
-	
+    
 	
 }
 
-.options {
-
-}
 .outline {
 	background-color: black;
 }
+
 .options{
     border: 3px;
     width: 100%;
-    float: right;
-    background-color: #1c6a7c;
-    text-align: center;
+    background-color:dodgerblue;
+    left: 20px;
+}
+
+.options select {
+    position: relative;
 }
 
 .main{
@@ -55,8 +55,8 @@ table, th, tr{
     width: 100%;
     height: 20em;
     text-align: center;
-    background-color: #8ecec6;
-    
+    background-color:dodgerblue;
+    padding-bottom: 39em;
 
 }
 
@@ -68,7 +68,7 @@ table, th, tr{
 }
 
 .icons {
-	
+    margin-bottom: 50px;
   border-radius: 5px;
   background-color: #3d4ee7;
   border: none;
