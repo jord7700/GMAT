@@ -4,8 +4,8 @@ app.controller('myCtrl', function($scope) {
     $scope.chara = true;
     $scope.monst = true;
     $scope.story = true;
+    $scope.herpes = retString();
     $scope.results = 0;
-    console.log('myCtrl');
 
     $scope.toggle = function (name) {
         $scope.dice = true;
@@ -37,10 +37,7 @@ app.controller('myCtrl', function($scope) {
     $scope.die6 = function(){
         $scope.results = Math.floor(Math.random() * 6 + 1);
     }
-    $scope.die4 = function(){
+    $scope.die4 = function() {
         $scope.results = Math.floor(Math.random() * 4 + 1);
     }
-});
-app.controller('storyCtrl', function($scope, $http){
-    console.log('diceCtrl works!');
 });
