@@ -5,7 +5,7 @@ app.controller('myCtrl', function($scope){
     $scope.monst = true;
     $scope.story = true;
     $scope.results = 4;
-
+    console.log('myCtrl');
 
     $scope.toggle = function (name) {
         $scope.dice = true;
@@ -26,4 +26,7 @@ app.controller('myCtrl', function($scope){
     $scope.die20 = function(){
         $scope.results = Math.floor(Math.random() * 20 + 1);
     }
+});
+app.controller('storyCtrl', function($scope, $http){
+    console.log('diceCtrl works!');
 });
