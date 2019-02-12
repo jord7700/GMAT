@@ -1,10 +1,10 @@
 var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope) {
+app.controller('myCtrl', function($scope, $http) {
     $scope.dice = true;
     $scope.chara = true;
     $scope.monst = true;
     $scope.story = true;
-    $scope.herpes = retString();
+    $scope.test = retString();
     $scope.results = 0;
 
     $scope.toggle = function (name) {
