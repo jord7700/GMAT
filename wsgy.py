@@ -3,7 +3,7 @@ def application(environ,start_response):
     html = '<html>\n' \
            '<body>\n' \
            '<div style="width: 100%; font-size: 40px; font-weight: bold; text-align: center;">\n' \
-           'FUCK ME IN THE ASS\n' \
+           'wsgy\n' \
            '</div>\n' \
            '</body>\n' \
            '</html>\n'

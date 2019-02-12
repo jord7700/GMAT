@@ -25,4 +25,8 @@ app.controller('myCtrl', function($scope, $http) {
     $scope.dieRoll = function(diceValue) {
         $scope.results = Math.floor(Math.random() * diceValue + 1);
     }
+    $http.get("hello.py")
+        .then(function (response) {
+            $scope.test = response.data;
+            })
 });
