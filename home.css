@@ -55,7 +55,7 @@ table, th, tr{
     width: 100%;
     height: 20em;
     text-align: center;
-    background-color:dodgerblue;
+    background-color:grey;
     padding-bottom: 39em;
 
 }
@@ -68,7 +68,7 @@ table, th, tr{
 }
 
 .icons {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
   border-radius: 5px;
   background-color: #3d4ee7;
   border: none;
