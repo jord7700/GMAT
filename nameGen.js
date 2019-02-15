@@ -321,7 +321,7 @@ NameGen.Sequence.prototype.toString = function() {
  * @method
  */
 NameGen.Sequence.prototype.combinations = function() {
-    return this.sub.reduce(function(total, g) {
+   return this.sub.reduce(function(total, g) {
         return total * g.combinations();
     }, 1);
 };
