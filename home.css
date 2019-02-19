@@ -28,7 +28,7 @@ table, th, tr{
     margin: auto;
     float: left;
     background-color: #443635;
-	position: fixed;
+	position: relative;
 	border: 3px outset green;
     
 	
@@ -49,7 +49,9 @@ table, th, tr{
     position: relative;
 }
 
-
+.main{
+    
+}
 
 
 
