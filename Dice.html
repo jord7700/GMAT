@@ -7,14 +7,20 @@
 </head>
 <body>
   <div>
+	<!-- Normal Dice Buttons -->
         <button class = "dice" ng-click="dieRoll(20)"><img src = "png/dice.png"></br>Roll D20</button>
         <button class = "dice" ng-click="dieRoll(12)"><img src = "png/dice.png"></br>Roll D12</button>
         <button class = "dice" ng-click="dieRoll(10)"><img src = "png/dice.png"></br>Roll D10</button>
         <button class = "dice" ng-click="dieRoll(8)"><img src = "png/dice.png"></br>Roll D8</button>
         <button class = "dice" ng-click="dieRoll(6)"><img src = "png/dice.png"></br>Roll D6</button>
         <button class = "dice" ng-click="dieRoll(4)"><img src = "png/dice.png"></br>Roll D4</button>
+	
+	<!-- Custom Dice Input Field -->
+	<input type="text" id="diceCustomInput" ng-model="diceValue" placeholder="Enter Custom Die (Ex. 4d8)">
+	<button ng-click="customDieRoll(diceValue)">Roll!</button>
+	
+	<!-- Display Stage for Results -->
         <p class = "result">{{results}}</p>
-	<input type="text" ng-model="diceValue">
   </div>
 </body>
 </html>
