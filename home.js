@@ -9,6 +9,8 @@ var numDiceRolled = 0;	//DICE: used to count how many dice have been rolled.
     $scope.story = true;
     $scope.nameGen = true;
     $scope.results = 0;
+    $scope.postResults = "nothing";
+    $scope.noteText = "aString";
 
     $scope.toggle = function (name) {
         $scope.dice = true;
@@ -42,8 +44,15 @@ var numDiceRolled = 0;	//DICE: used to count how many dice have been rolled.
         numDiceRolled++;
 	$scope.results = diceResults.join("");
     }
-    $http.get("hello.py")
-        .then(function (response) {
-            $scope.test = response.data;
-            })
+
+    $scope.notesPost = function(){
+        var notes = {notes : String($scope.noteText)}
+        console.log($scope.noteText);
+        $http.post('hello', notes)
+            .then(function(response){
+                $scope.postResults = response.data;
+            });
+    }
+
+
 });
