@@ -158,7 +158,7 @@ NameGen.symbols = {
  * @returns {boolean}
  * @private
  */
-NameGen._isString = function(object) {
+NameGen.isString = function (object) {
     return Object.prototype.toString.call(object) === '[object String]';
 };
 
@@ -168,7 +168,7 @@ NameGen._isString = function(object) {
  * @returns {Array} A new array with the strings compressed
  * @private
  */
-NameGen._compress = function(array) {
+NameGen.compress = function (array) {
     var emit = [], accum = [];
     function dump() {
         if (accum.length > 0) {

@@ -40,10 +40,10 @@ var customDiceTotal = 0;
 	 * rolls again.*/
 	if(numDiceRolled > 0) {
         diceResults.push(", ");
-	    diceResults.push(Math.floor(Math.random() * diceValue + 1));
+        diceResults.push(Math.floor(Math.random() * diceValue + 1));
 	}
 	else {
-	    diceResults.push(Math.floor(Math.random() * diceValue + 1));
+        diceResults.push(Math.floor(Math.random() * diceValue + 1));
 	}
 		/*Gets dice value, then checks to see if there have already been any dice rolled.
 	 	* if there HAVE been dice rolled, it appends a ', ' to the previous value and then
