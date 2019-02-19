@@ -6,11 +6,12 @@
     <title>story</title>
 </head>
 <body>
-    <p>This is where you put your notes</p>
-    <textarea ng-model="noteText"></textarea>
-    <button ng-click="sendText()">a Button</button>
-    <p>
-    {{test}}
-    </p>
+    <div ng-app="newApp" ng-controller="newCtrl">
+        <textarea ng-model="noteText"></textarea>
+        <input type="file" ng-file="onFileSelect()"/>
+        <button ng-click="notesPost()">save button</button>
+        <p>{{postResults}}</p>
+    </div>
+
 </body>
 </html>
