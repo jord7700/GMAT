@@ -39,15 +39,4 @@ var numDiceRolled = 0;	//DICE: used to count how many dice have been rolled.
         numDiceRolled++;
 	$scope.results = diceResults.join("");
     }
-
-    $scope.notesPost = function(){
-        var notes = {notes : String($scope.noteText)}
-        console.log($scope.noteText);
-        $http.post('hello', notes)
-            .then(function(response){
-                $scope.postResults = response.data;
-            });
-    }
-
-
 });
