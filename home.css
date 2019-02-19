@@ -35,7 +35,7 @@ table, th, tr{
 }
 
 .outline {
-	background-color: black;
+	background-color: lightgrey;
 }
 
 .options{
@@ -49,16 +49,7 @@ table, th, tr{
     position: relative;
 }
 
-.main{
-    border: 3px;
-    float: left;
-    width: 100%;
-    height: 20em;
-    text-align: center;
-    background-color:grey;
-    padding-bottom: 39em;
 
-}
 
 
 

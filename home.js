@@ -34,10 +34,10 @@ var numDiceRolled = 0;	//DICE: used to count how many dice have been rolled.
 	 * rolls again.*/
 	if(numDiceRolled > 0) {
         diceResults.push(", ");
-	    diceResults.push(Math.floor(Math.random() * diceValue + 1));
+        diceResults.push(Math.floor(Math.random() * diceValue + 1));
 	}
 	else {
-	    diceResults.push(Math.floor(Math.random() * diceValue + 1));
+        diceResults.push(Math.floor(Math.random() * diceValue + 1));
 	}
         numDiceRolled++;
 	$scope.results = diceResults.join("");

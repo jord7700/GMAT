@@ -3,7 +3,7 @@ body {
     width: auto;
     text-align: center;
     margin: 0 auto;
-    background-color: #eef;
+    background-color: red;
     overflow-y: scroll;
 }
 
@@ -40,9 +40,7 @@ h1 {
     padding: 0px;
     margin: 5px auto 0px auto;
 }
-
 #output li {
-    display: inline-block;
     overflow: hidden;
     font-size: 14px;
     height: 16px;
@@ -50,13 +48,14 @@ h1 {
     margin: 1px 0;
 }
 
+
 input.invalid {
     box-shadow: 0px 0px 3px 3px pink;
 }
 
 #count {
     font-size: 10px;
-    color: gray;
+    color: black;
     width: 400px;
     margin: 2px auto;
     height: 12px;
@@ -92,15 +91,13 @@ input.invalid {
     text-align: center;
 }
 
-
-
-#instructions a {
-    text-decoration: none;
-    font-size: 11px;
-}
-
 #instructions {
     margin: -2px auto;
     text-align: center;
     float: center;
+}
+
+#instructions a {
+    text-decoration: none;
+    font-size: 11px;
 }
