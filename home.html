@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head >
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="home.css"/>
     <title>GMAT</title>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="//code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script type="application/javascript" src="home.js"></script>
     <script type="application/javascript" src="story.js"></script>
     <script type="application/javascript" src="Dice.js"></script>
+    <script type="application/javascript" src="nameGen.js"></script>
 </head>
 <body class = "outline">
 
@@ -48,6 +50,11 @@
                     <button class = "icons" ng-click="toggle('monst')"><img src = "png/monster.png"><span></span></button>
                 </td>
             </tr>
+	        <tr>
+                <td>
+		            <button class = "icons" ng-click="toggle('nameGen')"><img src = "png/name.png"><span></span></button>
+		        </td>
+            </tr>
         </table>
     </div>
 
@@ -56,6 +63,7 @@
         <div ng-include="'Story.html'" ng-hide="story"></div>
         <div ng-include="'CharGen.html'" ng-hide="chara"></div>
         <div ng-include="'MonsterGen.html'" ng-hide="monst"></div>
+	    <div ng-include="'nameGenIndex.html'" ng-hide="nameGen"></div>
     </div>
 
 </div>

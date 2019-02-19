@@ -1,15 +1,21 @@
+/*global angular*/
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
     $scope.dice = true;
     $scope.chara = true;
     $scope.monst = true;
     $scope.story = true;
+    $scope.nameGen = true;
+    $scope.results = 0;
+    $scope.postResults = "nothing";
+    $scope.noteText = "aString";
 
     $scope.toggle = function (name) {
         $scope.dice = true;
         $scope.chara = true;
         $scope.monst = true;
         $scope.story = true;
+        $scope.nameGen = true;
         if (name === 'dice') {
             $scope.dice = false;
         } else if(name === 'chara'){
@@ -18,6 +24,8 @@ app.controller('myCtrl', function($scope, $http) {
             $scope.monst = false;
         } else if(name === 'story'){
             $scope.story = false;
+        } else if(name ==='nameGen'){
+            $scope.nameGen = false;
         }
     }
 });
