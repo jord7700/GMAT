@@ -19,16 +19,7 @@ angular.module('myApp').controller('diceCtrl', function($scope, fileReader, $htt
         else {
             diceResults.push(Math.floor(Math.random() * diceValue + 1));
         }
-        /*Gets dice value, then checks to see if there have already been any dice rolled.
-         * if there HAVE been dice rolled, it appends a ', ' to the previous value and then
-         * rolls again.*/
-        if(numDiceRolled > 0) {
-            diceResults.push(", ");
-            diceResults.push(Math.floor(Math.random() * diceValue + 1));
-        }
-        else {
-            diceResults.push(Math.floor(Math.random() * diceValue + 1));
-        }
+       
         numDiceRolled++;
         $scope.results = diceResults.join("");
     }
