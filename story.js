@@ -1,5 +1,6 @@
 angular.module('myApp').controller('newCtrl', function($scope, fileReader, $http){
     $scope.noteText = 'tis new controller';
+    $scope.postResults = "nothing";
     $scope.notesPost = function(){
         var notes = {notes : String($scope.noteText)}
         console.log($scope.noteText);
