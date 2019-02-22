@@ -6,7 +6,6 @@ angular.module('myApp').controller('diceCtrl', function($scope, fileReader, $htt
     var customDieNumber = [];
     var customDiceSplit = false;
     var customDiceTotal = 0;
-    console.log('here!');
     $scope.results = 0;
     $scope.dieRoll = function(diceValue) {
         /*Gets dice value, then checks to see if there have already been any dice rolled.
