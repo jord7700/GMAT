@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="home.css"/>
     <title>GMAT</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="//code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js"></script>
@@ -13,10 +12,11 @@
     <script type="application/javascript" src="story.js"></script>
     <script type="application/javascript" src="Dice.js"></script>
     <script type="application/javascript" src="nameGen.js"></script>
+    <script type="application/javascript" src="nameGenPage.js"></script>
 </head>
-<body class = "outline">
+<body class = "outline" ng-app="myApp">
 
-<div class="wrap" ng-app="myApp" ng-controller="myCtrl">
+<div class="wrap"  ng-controller="myCtrl">
 
     <div class="options">
         <select class = "optionsTabs">

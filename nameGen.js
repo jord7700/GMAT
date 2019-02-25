@@ -1,5 +1,4 @@
-
-/*
+/**
  * @file A fantasy name generator library.
  * @version 1.0.0
  * @license Public Domain
@@ -71,28 +70,28 @@
  * @returns {number}
  * @method
  */
-String.prototype.combinations = function () { return 1; };
+String.prototype.combinations = function() { return 1; };
 
 /**
  * Longest possible output length (generator function).
  * @returns {number}
  * @method
  */
-String.prototype.min = function () { return this.length; };
+String.prototype.min = function() { return this.length; };
 
 /**
  * Shortest possible output length (generator function).
  * @returns {number}
  * @method
  */
-String.prototype.max = function () { return this.length; };
+String.prototype.max = function() { return this.length; };
 
 /**
  * List all possible outputs (generator function).
  * @returns {Array} An array of output strings.
  * @method
  */
-String.prototype.enumerate = function () { return [String(this)]; };
+String.prototype.enumerate = function() { return [String(this)]; };
 
 /**
  * @namespace NameGen Everything relevant to the name generators.
@@ -158,7 +157,7 @@ NameGen.symbols = {
  * @returns {boolean}
  * @private
  */
-NameGen.isString = function (object) {
+NameGen._isString = function(object) {
     return Object.prototype.toString.call(object) === '[object String]';
 };
 
@@ -168,7 +167,7 @@ NameGen.isString = function (object) {
  * @returns {Array} A new array with the strings compressed
  * @private
  */
-NameGen.compress = function (array) {
+NameGen._compress = function(array) {
     var emit = [], accum = [];
     function dump() {
         if (accum.length > 0) {
@@ -215,12 +214,12 @@ NameGen._reverse = function(string) {
 NameGen.Random = function Random(generators) {
     if (!(this instanceof NameGen.Random)) {
         switch (generators.length) {
-        case 0:
-            return '';
-        case 1:
-            return generators[0];
-        default:
-            return new NameGen.Random(generators);
+            case 0:
+                return '';
+            case 1:
+                return generators[0];
+            default:
+                return new NameGen.Random(generators);
         }
     }
     this.sub = generators;
@@ -294,12 +293,12 @@ NameGen.Sequence = function Sequence(generators) {
     generators = NameGen._compress(generators);
     if (!(this instanceof NameGen.Sequence)) {
         switch (generators.length) {
-        case 0:
-            return '';
-        case 1:
-            return generators[0];
-        default:
-            return new NameGen.Sequence(generators);
+            case 0:
+                return '';
+            case 1:
+                return generators[0];
+            default:
+                return new NameGen.Sequence(generators);
         }
     }
     this.sub = generators;
@@ -321,7 +320,7 @@ NameGen.Sequence.prototype.toString = function() {
  * @method
  */
 NameGen.Sequence.prototype.combinations = function() {
-   return this.sub.reduce(function(total, g) {
+    return this.sub.reduce(function(total, g) {
         return total * g.combinations();
     }, 1);
 };
@@ -516,44 +515,44 @@ NameGen.compile = function(input) {
     for (var i = 0; i < input.length; i++) {
         var c = input[i];
         switch (c) {
-        case '<':
-            stack.push(new NameGen._Symbol());
-            break;
-        case '(':
-            stack.push(new NameGen._Literal());
-            break;
-        case '>':
-        case ')':
-            if (stack.length === 1) {
-                throw new Error('Unbalanced brackets.');
-            } else if (c === '>' && stack.top() instanceof NameGen._Literal) {
-                throw new Error('Unexpected ">" in input.');
-            } else if (c === ')' && stack.top() instanceof NameGen._Symbol) {
-                throw new Error('Unexpected ")" in input.');
-            }
-            var last = stack.pop().emit();
-            stack.top().add(last, true);
-            break;
-        case '|':
-            stack.top().split();
-            break;
-        case '!':
-            if (stack.top() instanceof NameGen._Symbol) {
-                stack.top().wrap(NameGen.Capitalizer);
-            } else {
+            case '<':
+                stack.push(new NameGen._Symbol());
+                break;
+            case '(':
+                stack.push(new NameGen._Literal());
+                break;
+            case '>':
+            case ')':
+                if (stack.length === 1) {
+                    throw new Error('Unbalanced brackets.');
+                } else if (c === '>' && stack.top() instanceof NameGen._Literal) {
+                    throw new Error('Unexpected ">" in input.');
+                } else if (c === ')' && stack.top() instanceof NameGen._Symbol) {
+                    throw new Error('Unexpected ")" in input.');
+                }
+                var last = stack.pop().emit();
+                stack.top().add(last, true);
+                break;
+            case '|':
+                stack.top().split();
+                break;
+            case '!':
+                if (stack.top() instanceof NameGen._Symbol) {
+                    stack.top().wrap(NameGen.Capitalizer);
+                } else {
+                    stack.top().add(c);
+                }
+                break;
+            case '~':
+                if (stack.top() instanceof NameGen._Symbol) {
+                    stack.top().wrap(NameGen.Reverser);
+                } else {
+                    stack.top().add(c);
+                }
+                break;
+            default:
                 stack.top().add(c);
-            }
-            break;
-        case '~':
-            if (stack.top() instanceof NameGen._Symbol) {
-                stack.top().wrap(NameGen.Reverser);
-            } else {
-                stack.top().add(c);
-            }
-            break;
-        default:
-            stack.top().add(c);
-            break;
+                break;
         }
     }
     if (stack.length !== 1) {
@@ -562,4 +561,3 @@ NameGen.compile = function(input) {
         return stack.top().emit();
     }
 };
-

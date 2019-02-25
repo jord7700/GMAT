@@ -1,12 +1,11 @@
-import mysql.connector
-from mysql.connector import errorcode
+import _mysql
 
 try:
     #Connecting to the database using mysql.connector.
-    db = mysql.connector.connect(host="localhost",
-                                 user="Kreutz",
-                                 database="gmat",
-                                 password="#Mustangs18PennState18")
+    db = mysql.connect(host="localhost",
+                       user="Kreutz",
+                       db="gmat",
+                           passwrd="#Mustangs18PennState18")
 
     cur = db.cursor()
 

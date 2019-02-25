@@ -10,7 +10,7 @@ angular.module('myApp').controller('newCtrl', function($scope, fileReader, $http
             });
     }
 
-    console.log(fileReader)
+
     $scope.getFile = function () {
         $scope.progress = 0;
         fileReader.readAsText($scope.file, $scope)
