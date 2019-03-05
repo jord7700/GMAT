@@ -37,7 +37,6 @@ function update(event) {
     clear();
     //generator = NameGen.compile("this input");
     try {
-        //console.log("jesse loves to cuck");
         generator = NameGen.compile($('#spec').val());
         console.log("post compile");
         $('#spec').removeClass('invalid');
