@@ -6,6 +6,7 @@ app.controller('myCtrl', function($scope, $http) {
     $scope.monst = true;
     $scope.story = true;
     $scope.nameGen = true;
+    $scope.dungeon = true;
     $scope.results = 0;
     $scope.postResults = "nothing";
     $scope.noteText = "aString";
@@ -16,6 +17,7 @@ app.controller('myCtrl', function($scope, $http) {
         $scope.monst = true;
         $scope.story = true;
         $scope.nameGen = true;
+        $scope.dungeon = true;
         if (name === 'dice') {
             $scope.dice = false;
         } else if(name === 'chara'){
@@ -26,6 +28,8 @@ app.controller('myCtrl', function($scope, $http) {
             $scope.story = false;
         } else if(name ==='nameGen'){
             $scope.nameGen = false;
+        } else if(name === 'dungeon'){
+            $scope.dungeon = false;
         }
     }
 });
