@@ -1,19 +1,6 @@
 <?php
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "gmatroot123";
-    $dbname = "gmat";
-    
-    
-    //connecting to db
-    $connection = new mysqli($servername, $username, $password, $dbname);
-    
-    if (!$connection) {
-        die("connectionection Failed: Aborting..." . mysqli_connect_error());
-    } else {
-        echo "Connection Successful </br>";
-    }
+    include 'dbconnect.php';
 
 $characterData = "drop table characterData";
 $monsterData = "drop table monsterData";
@@ -24,8 +11,11 @@ $mrw = "drop table martialRangedWeapons";
 $startingArea = "drop table startingArea";
 $passageWidth = "drop table passageWidth";
 $passage = "drop table passage";
+$doorType = "drop table doorType";
+$chamber = "drop table chamber";
+$chamberExits = "drop table chamberExits";
     
-$tables = [$characterData, $monsterData, $smw, $srw, $mmw, $mrw, $startingArea, $passageWidth, $passage];
+$tables = [$characterData, $monsterData, $smw, $srw, $mmw, $mrw, $startingArea, $passageWidth, $passage, $doorType, $chamber, $chamberExits];
 $count = 1;    
  foreach($tables as $x => $sql){
     if(mysqli_query($connection, $sql)) {
