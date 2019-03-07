@@ -1,19 +1,6 @@
 <?php
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "gmatroot123";
-    $dbname = "gmat";
-    
-    
-    //connecting to db
-    $connection = new mysqli($servername, $username, $password, $dbname);
-    
-    if (!$connection) {
-        die("connectionection Failed: Aborting..." . mysqli_connect_error());
-    } else {
-        echo "Connection Successful </br>";
-    }
+    include 'dbconnect.php';
 
 $characterData = "create table characterData (charID int not null auto_increment,
                             charClass varchar(20) not null,             
@@ -69,15 +56,12 @@ $mrw = "Create table martialRangedWeapons (mrwID int not null auto_increment,
     
 $startingArea = "Create table startingArea (saID int not null auto_increment,
                                             saDiceNum int not null,
-                                            saShape varchar(10) not null,
-                                            saSize varchar(10) not null,
-                                            saDoors int,
-                                            saPassages int,
+                                            saDetail text not null,
                                             primary key (saID))";
                                             
 $passageWidth = "create table passageWidth (pwID int not null auto_increment,
                                             pwDiceNum int not null,
-                                            pWidth int not null,
+                                            pDetail text not null,
                                             primary key (pwID))";
                                             
 $passage = "create table passage (passageID int not null auto_increment,
@@ -85,15 +69,35 @@ $passage = "create table passage (passageID int not null auto_increment,
                                   passageDetails text not null,                   
                                   primary key (passageID))";
                                   
+$doorType = "create table doorType (dTypeID int not null auto_increment,
+                                    dTypeDiceNum int not null,
+                                    dTypeDetail text not null,
+                                    primary key (dTypeID))";
+                                    
+$chamber = "create table chamber (chamberID int not null auto_increment,
+                                  chamberDiceNum int not null,
+                                  chamberDetails text not null,
+                                  primary key (chamberID))";
+                                  
+$chamberExits = "create table chamberExits (cExitID int not null auto_increment,
+                                            cExitDiceNum int not null,
+                                            cExitCount int not null,
+                                            primary key (cExitID))";
+                                  
+
+                                            
+                                
+                                  
     
     
-$tables = [$characterData, $monsterData, $smw, $srw, $mmw, $mrw, $startingArea, $passageWidth, $passage];
+$tables = [$characterData, $monsterData, $smw, $srw, $mmw, $mrw, $startingArea, $passageWidth, $passage,
+            $doorType, $chamber, $chamberExits];
 $count = 1;
  foreach($tables as $x => $sql){
     if(mysqli_query($connection, $sql)) {
         echo "Table $count Created <br>";
     } else {
-        echo "Error Creating Table $x<br>";
+        echo "Error Creating Table $x <br>";
     }
     $count++;
  }
