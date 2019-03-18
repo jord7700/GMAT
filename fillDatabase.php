@@ -3,16 +3,16 @@
     include 'dbconnect.php';
 
     $startingArea = "insert into startingArea (saDiceNum, saDetail) values 
-                    (1,'Square, 20 x 20ft.; passage on each wall'),
-                    (1,'Square, 20 x 20ft.; door on two walls, passage in third wall'),
-                    (1,'Square, 40 x 40 ft.; doors on three walls'),
-                    (1,'Rectangle, 80 x 20ft., with row of pil lars down the middle; two passages leading from each long wall, doors on each short wall'),
-                    (1,'Rectangle, 20 x 40ft.; passage on each wall'),
-                    (1,'Circle, 40ft. diameter; one passage at each cardinal direction'),
-                    (1,'Circle, 40ft. diameter; one passage in each cardinal direction; well in middle of room might lead down to lower level)'),
-                    (1,'Square, 20 x 20ft.; door on two wal ls, passage on third wall, secret door on fourth wall'),
-                    (1,'Passage, 10 ft. wide; T intersection'),
-                    (1,'Passage , 10ft. wide; four-way intersection')";
+                    (1,'Square, 20 x 20ft.; passage on each wall (2)'),
+                    (1,'Square, 20 x 20ft.; door on two walls, passage in third wall (3)'),
+                    (1,'Square, 40 x 40 ft.; doors on three walls (3)'),
+                    (1,'Rectangle, 80 x 20ft., with row of pillars down the middle; two passages leading from each long wall, doors on each short wall (2)'),
+                    (1,'Rectangle, 20 x 40ft.; passage on each wall (4)'),
+                    (1,'Circle, 40ft. diameter; one passage at each cardinal direction (4)'),
+                    (1,'Circle, 40ft. diameter; one passage in each cardinal direction; well in middle of room might lead down to lower level (4)'),
+                    (1,'Square, 20 x 20ft.; door on two walls, passage on third wall, secret door on fourth wall (4)'),
+                    (1,'Passage, 10 ft. wide; T intersection (2)'),
+                    (1,'Passage , 10ft. wide; four-way intersection (4)')";
                     
     $passage = "insert into passage (passageDiceNum, passageDetails) values
                     (2, 'Continue straight 30ft., no doors or side passages'),
