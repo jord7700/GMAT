@@ -73,7 +73,7 @@
         <div ng-include="'CharGen.html'" ng-hide="chara"></div>
         <div ng-include="'MonsterGen.php'" ng-hide="monst"></div>
         <div ng-include="'nameGenIndex.html'" ng-hide="nameGen"></div>
-        <div ng-include="'dungeonGen.php'" ng-hide="dungeon"></div>
+        <div ng-include="'dungeonGen.html'" ng-hide="dungeon"></div>
     </div>
 
 </div>
