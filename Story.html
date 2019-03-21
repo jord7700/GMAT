@@ -3,14 +3,15 @@
 <head>
     <link rel="stylesheet" type="text/css" href="Story.css"/>
     <meta charset="UTF-8">
-    <title>story</title>
+    <title>Story</title>
 </head>
 <body>
-    <p>This is where you put your notes</p>
-    <textarea ng-model="noteText">{{noteText}}</textarea>
-    <button ng-click="sendText()">a Button</button>
-    <p>this
-    {{herpes}}
-    </p>
+    <div ng-controller="newCtrl">
+        <textarea ng-model="noteText"></textarea>
+        <input type="file" ng-file="onFileSelect()"/>
+        <button ng-click="notesPost()">save button</button>
+        <p>{{postResults}}</p>
+    </div>
+
 </body>
 </html>

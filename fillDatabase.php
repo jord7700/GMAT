@@ -2,6 +2,7 @@
 
     include 'dbconnect.php';
 
+<<<<<<< HEAD
 	$monsterData = "insert into monsterData (monstName, monstEnviron, monstHP, monstCR) values
 						('Awakened Shrub', 'fr', 10, 0),
 						('Baboon', 'frhi', 3, 0),
@@ -36,6 +37,8 @@
 						
 						
 
+=======
+>>>>>>> 8d6dd593de3e474711af745c194499d414edd258
     $startingArea = "insert into startingArea (saDiceNum, saDetail) values 
                     (1,'Square, 20 x 20ft.; passage on each wall (2)'),
                     (1,'Square, 20 x 20ft.; door on two walls, passage in third wall (3)'),

@@ -28,14 +28,14 @@ table, th, tr{
     margin: auto;
     float: left;
     background-color: #443635;
-	position: fixed;
+	position: relative;
 	border: 3px outset green;
     
 	
 }
 
 .outline {
-	background-color: black;
+	background-color: lightgrey;
 }
 
 .options{
@@ -50,14 +50,7 @@ table, th, tr{
 }
 
 .main{
-    border: 3px;
-    float: left;
-    width: 100%;
-    height: 20em;
-    text-align: center;
-    background-color:dodgerblue;
-    padding-bottom: 39em;
-
+    
 }
 
 
@@ -68,7 +61,7 @@ table, th, tr{
 }
 
 .icons {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
   border-radius: 5px;
   background-color: #3d4ee7;
   border: none;
@@ -104,4 +97,5 @@ table, th, tr{
 .icons:hover span:after {
   opacity: 1;
   right: 0;
+
 }

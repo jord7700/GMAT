@@ -1,0 +1,14 @@
+.monsTable {
+  border: 1px solid black;
+  text-align: center;
+}
+.monsTable th{
+  text-align: left;
+  padding: 8px;
+  position: center;
+}
+
+.monsTable tr:nth-child(even) {
+  background-color: #dddddd;
+}
+

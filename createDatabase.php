@@ -15,6 +15,7 @@ $characterData = "create table characterData (charID int not null auto_increment
 
     
 $monsterData = "create table monsterData (monstID int not null auto_increment,          
+<<<<<<< HEAD
 					                              monstName varchar(20) not null,             
 					                              monstEnviron varchar(20) not null,
                                                   monstHP int not null,                          
@@ -25,6 +26,15 @@ $monsterData = "create table monsterData (monstID int not null auto_increment,
          
 $environmentData = "create table environmentData (environID varchar(2) not null,
 						              environName varchar(10) not null)";
+=======
+                                            monstName varchar(20) not null,             
+                                            monstHP int not null,                          
+                                            monstArmor int not null,                       
+                                            monstCR int not null,                          
+                                            monstExp4CR int not null,                      
+                                            primary key(monstID))";                          
+                                            
+>>>>>>> 8d6dd593de3e474711af745c194499d414edd258
     
 $smw = "Create table simpleMeleeWeapons (smwID int not null auto_increment,             
                                                     smwCost int not null,       
@@ -105,4 +115,8 @@ $count = 1;
     $count++;
  }
     mysqli_close($connection);
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> 8d6dd593de3e474711af745c194499d414edd258
