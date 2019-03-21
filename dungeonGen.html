@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DunGen</title>
+</head>
+<body>
+    <p>not a regular dungeon gen ;)</p>
+    <div ng-controller="dungeonCtrl">
+        <select ng-model="selected" ng-options="item for item in names" ng-change="justChanged()">
+        </select>
+        <button ng-click="genDungeon()">Gen Dungeon</button>
+        <p>{{postResults}}</p>
+    </div>
+</body>
+</html>
