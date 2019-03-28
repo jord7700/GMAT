@@ -7,10 +7,15 @@
 <body>
     <p>not a regular dungeon gen ;)</p>
     <div ng-controller="dungeonCtrl">
-        <select ng-model="selected" ng-options="item for item in names" ng-change="justChanged()">
+        <select ng-model="size" ng-options="item for item in sizes" ng-change="justChanged()">
+        </select>
+        <select ng-model="environment" ng-options="item for item in environments" ng-change="justChanged()">
         </select>
         <button ng-click="genDungeon()">Gen Dungeon</button>
         <p>{{postResults}}</p>
+        <p>here we r</p>
+        <button ng-click="add()">add</button>
+        <ng-portlet></ng-portlet>
     </div>
 </body>
 </html>
