@@ -40,15 +40,6 @@
         }endwhile; 
         $finalSQL = "select saDetail from startingArea where saID = '$i'";
         $finalResult = mysqli_query($connection, $finalSQL);
-    ?>
-        <!--    
-        <p><//?php echo $rdmGen; ?></p>
-        <p><//?php echo $saDiceNum; ?></p>
-        <p><//?php echo $sum; ?></p>
-        <p><//?php echo $i; ?></p> 
-	<p><//?php echo $finalSQL;  ?> </p>
-	-->
-        <?php
         
             
             while($row = mysqli_fetch_array($finalResult)):{
@@ -60,19 +51,17 @@
 
 <?php
 	
-	$numDoors = $saDetail[strlen($saDetail) - 2];
-	//echo $numDoors;
-?>
-<?php 
+    $numDoors = $saDetail[strlen($saDetail) - 2];
+    //echo $numDoors;
+    
     $saDiceNum = 0;
     $sum = 0;
     $i = 0;
     $saDetail = "";
     $sql = "select chamberDiceNum from chamber";
     $result = mysqli_query($connection, $sql);
-?>
-<?php
-    while($numDoors > 0){
+    
+	while($numDoors > 0){
 	    $saDiceNum = 0;
 	    $sum = 0;
 	    $i = 0;
@@ -80,8 +69,9 @@
 	    $sql = "select chamberDiceNum from chamber";
 	    $result = mysqli_query($connection, $sql);
 	    $numDoors = $numDoors -1;
+	 
 	    while ($row = mysqli_fetch_array($result)): {
-		$saDiceNum += $row['chamberDiceNum'];
+			$saDiceNum += $row['chamberDiceNum'];
 	    }endwhile; 
 		    
 	    $rdmGen = rand(1,$saDiceNum);
@@ -98,16 +88,6 @@
 	    }endwhile; 
 	    $finalSQL = "select chamberDetails from chamber where chamberID = '$i'";
 	    $finalResult = mysqli_query($connection, $finalSQL);
-    ?>
-        <!--    
-        <p><//?php echo $rdmGen; ?></p>
-        <p><//?php echo $saDiceNum; ?></p>
-        <p><//?php echo $sum; ?></p>
-        <p><//?php echo $i; ?></p> 
-	<p><//?php echo $finalSQL;  ?> </p>
-	-->
-        <?php    
-            
             while($row = mysqli_fetch_array($finalResult)):{
                 $saDetail = $row['chamberDetails'];
             }endwhile;?>
@@ -115,16 +95,6 @@
 <?php
     }
 ?>
-<?php
-	/*    
-	while($numDoors > 0){
-		$numDoors = $numDoors -1;
-		getChamber();
-		echo "end";
-	}
-	 */
-?>
-          
     
 </body>
 </html>
