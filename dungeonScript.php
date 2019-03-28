@@ -5,9 +5,8 @@
     //$message =  (string)$post;
     //echo $message['notes'];
     //echo $saDetail;
-    $array = [
-    	"starting" => $saDetail,
-	"anotherKey" => "moreData",
-    ];
-    echo json_encode($message);
+    $environ = $message["dungeonEnvironment"];
+    $startingArea = getStartingArea();
+
+    echo json_encode($startingArea);
 ?>

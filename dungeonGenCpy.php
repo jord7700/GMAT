@@ -4,10 +4,10 @@
     
 
 
-	
-	$numDoors = $saDetail[strlen($saDetail) - 2];
+
+	$numDoors = 1;
 	//echo $numDoors;
-	function writeMsg() {
+	function getStartingArea() {
 	global $connection;
 	    $saDiceNum = 0;
         $sum = 0;
@@ -39,7 +39,13 @@
                 }endwhile;
     	 //echo $saDetail;
 
+    $array = [
+        "starting" => $saDetail,
+    	//"starting" => $saDetail,
+	//"anotherKey" => "moreData",
+    ];
 
-        echo $saDetail;
+    $array["chamber1"] = "square room, 10ft wide, 2 way intersection";
+
+        return $array;
     }
-?>
