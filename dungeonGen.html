@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>DunGen</title>
+    <link rel="stylesheet" type="text/css" href="dungeonGen.css"/>
 </head>
 <body>
     <p>not a regular dungeon gen ;)</p>
     <div ng-controller="dungeonCtrl">
-        <select ng-model="selected" ng-options="item for item in names" ng-change="justChanged()">
+        <select ng-model="size" ng-options="item for item in sizes" ng-change="justChanged()">
+        </select>
+        <select ng-model="environment" ng-options="item for item in environments" ng-change="justChanged()">
         </select>
         <button ng-click="genDungeon()">Gen Dungeon</button>
         <p>{{postResults}}</p>
+        <ol id="add"></ol>
     </div>
 </body>
 </html>
