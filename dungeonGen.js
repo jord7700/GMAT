@@ -9,13 +9,13 @@ angular.module('myApp').controller('dungeonCtrl', function($scope,fileReader, $h
         var notes = {notes : 123}
         $http.post('dungeonScript.php', userParams)
             .then(function(response){
-                $scope.postResults = formatOutput(response.data);
-                console.log("proof");
+                $scope.add(response.data);
 		        //$scope.postResults = response.data;
                 //$scope.postResults  += parseInt(response.data) + 3;
             });
 
     };
+
     $scope.justChanged = function(){
         $scope.postResults = $scope.selected;
         console.log($scope.sizes);
@@ -23,18 +23,24 @@ angular.module('myApp').controller('dungeonCtrl', function($scope,fileReader, $h
         userParams.dungeonSize = $scope.size;
         userParams.dungeonEnvironment = $scope.environment;
     };
-}).directive("ngPortlet", function($compile){
-    return {
-        template: sadff,
-        restrict: 'E',
-            link: function (scope, elm){
-                scope.add = function(){
-                    console.log(elm);
-                    elm.after($compile('<ng-portlet></ng-portlet>')(scope));
-                }
-            }
+
+    $scope.add = function(dungeonData){
+        var rooms = formatOutput(dungeonData);
+        console.log(dungeonData);
+        var node = document.getElementById('add');
+        var message = "<ul>";
+        for(var i=rooms.length-1; i >= 1; i--)
+        {
+            var message = message +'<li>' + rooms[i] + '</li>';
+        }
+        var message = message + '</ul>';
+        node.insertAdjacentHTML('afterend', message);
+
+        var message = '<li>' + rooms[0] + '</li>';
+        node.insertAdjacentHTML('afterend', message);
     }
 });
+
 /*
 <option value="dungSize">Dungeon Size</option>
 <option value="dungEnvironment">Dungeon Environment</option>
@@ -42,9 +48,17 @@ angular.module('myApp').controller('dungeonCtrl', function($scope,fileReader, $h
 <option value="dungItems">Dungeon Items</option>
 */
 
-function formatOutput(output){
-    var startingArea = output;
-    var message = startingArea["starting"] + startingArea["chamber1"];
-    console.log(message);
-    return message;
+function formatOutput(dungeonData){
+    var roomData = dungeonData;
+    var rooms = [dungeonData["starting"], dungeonData["chamber1"]];
+
+/*    for (var i = 0; i < roomData.length; i++)
+    {
+        var obj = roomData[i];
+        console.log(obj.id + "hi");
+        room.push(obj.id);
+    }
+*/
+    return rooms;
 }
+

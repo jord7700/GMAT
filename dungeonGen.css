@@ -1,0 +1,6 @@
+li {
+    padding-left: 200px;
+    display: list-item;
+    text-align: left;
+    list-style-position: inside;
+}
