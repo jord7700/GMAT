@@ -1,12 +1,11 @@
 <?php
 
     include 'dbconnect.php';   
-    
 
 
 
 	$numDoors = 1;
-	//echo $numDoors;
+//generates dungeon, formats message in object array
 	function getStartingArea() {
 	global $connection;
 	    $saDiceNum = 0;
@@ -39,13 +38,19 @@
                 }endwhile;
     	 //echo $saDetail;
 
-    $array = [
-        "starting" => $saDetail,
-    	//"starting" => $saDetail,
-	//"anotherKey" => "moreData",
-    ];
-
-    $array["chamber1"] = "square room, 10ft wide, 2 way intersection";
-
+//todo: change array to more proper json format (add id to simplify processing message)
+    $array = array(
+        array(
+            "id" => 1,
+            "roomType" => "Starting Room",
+            "data"=> $saDetail,
+        )
+    );
+//todo: create loop to add multiple chambers and other dungeon elements
+    array_push($array, array(
+        "id" => 2,
+        "roomType" => "chamber",
+        "data" =>"square room, 10ft wide, 2 way intersection",
+    ));
         return $array;
     }

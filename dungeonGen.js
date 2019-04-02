@@ -1,12 +1,16 @@
 angular.module('myApp').controller('dungeonCtrl', function($scope,fileReader, $http){
-    $scope.postResults = "nothing";
+    $scope.postResults = "";
     var userParams = {};
     $scope.prePostResults = "";
-    $scope.sizes = ["Small", "Medium", "Large"];
-    $scope.environments = ["Grass", "Cave", "Hills"];
+    /*
+This will be used for user params
 
+    S$scope.sizes = ["Small", "Medium", "Large"];
+    $scope.environments = ["Grass", "Cave", "Hills"];
+    */
+
+//takes user input if needed, calls php dungeon generator and outputs dungeon
     $scope.genDungeon = function(){
-        var notes = {notes : 123}
         $http.post('dungeonScript.php', userParams)
             .then(function(response){
                 $scope.add(response.data);
@@ -16,6 +20,8 @@ angular.module('myApp').controller('dungeonCtrl', function($scope,fileReader, $h
 
     };
 
+/*
+was used for testing, no longer needed but has helpful code for passing userparams
     $scope.justChanged = function(){
         $scope.postResults = $scope.selected;
         console.log($scope.sizes);
@@ -23,10 +29,12 @@ angular.module('myApp').controller('dungeonCtrl', function($scope,fileReader, $h
         userParams.dungeonSize = $scope.size;
         userParams.dungeonEnvironment = $scope.environment;
     };
+*/
 
+//takes the dungeon data and adds it into the HTML view as new elements
     $scope.add = function(dungeonData){
         var rooms = formatOutput(dungeonData);
-        console.log(dungeonData);
+        //console.log(dungeonData);
         var node = document.getElementById('add');
         var message = "<ul>";
         for(var i=rooms.length-1; i >= 1; i--)
@@ -41,24 +49,28 @@ angular.module('myApp').controller('dungeonCtrl', function($scope,fileReader, $h
     }
 });
 
+//takes the dungeonData and changes it into an array of strings
+//todo: we'll need to make this put things into an object to deal with multiple rooms
+function formatOutput(dungeonData){
+    var roomData = dungeonData;
+    console.log(roomData.length);
+    var rooms = [];
+//    var rooms = [dungeonData["starting"], dungeonData["chamber1"]];
+
+    for (var i = 0; i < roomData.length; i++)
+    {
+        var obj = roomData[i];
+        rooms.push(obj.data);
+    }
+
+    return rooms;
+}
+
 /*
+This is stuff we should add
+
 <option value="dungSize">Dungeon Size</option>
 <option value="dungEnvironment">Dungeon Environment</option>
 <option value="dungMonster">Dungeon Monsters</option>
 <option value="dungItems">Dungeon Items</option>
 */
-
-function formatOutput(dungeonData){
-    var roomData = dungeonData;
-    var rooms = [dungeonData["starting"], dungeonData["chamber1"]];
-
-/*    for (var i = 0; i < roomData.length; i++)
-    {
-        var obj = roomData[i];
-        console.log(obj.id + "hi");
-        room.push(obj.id);
-    }
-*/
-    return rooms;
-}
-
