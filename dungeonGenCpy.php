@@ -10,7 +10,7 @@
 	global $connection;
 	    $saDiceNum = 0;
         $sum = 0;
-        $i = 0;
+        $i = 1;
         $saDetail = "";
         $sql = "select saDiceNum from startingArea";
         $result = mysqli_query($connection, $sql);
@@ -23,6 +23,16 @@
 
             mysqli_data_seek($result, 0);
 
+            while($row = mysqli_fetch_array($result)): {
+                $sum += $row['saDiceNum'];
+                //echo "sum= " . $sum . "\n";
+                if ($sum >= $rdmGen){
+                    break;
+                }
+                $i++;
+            }endwhile;
+
+/*
             while ($row = mysqli_fetch_array($result)): {
                 if($sum != $rdmGen){
                     $sum += $row['saDiceNum'];
@@ -31,6 +41,7 @@
                 else
                     break;
             }endwhile;
+*/
             $finalSQL = "select saDetail from startingArea where saID = '$i'";
             $finalResult = mysqli_query($connection, $finalSQL);
                 while($row = mysqli_fetch_array($finalResult)):{
@@ -69,7 +80,7 @@ $id = 1;
             global $connection;
     	    $saDiceNum = 0;
     	    $sum = 0;
-    	    $i = 0;
+    	    $i = 1;
     	    $saDetail = "";
     	    $sql = "select chamberDiceNum from chamber";
     	    $result = mysqli_query($connection, $sql);
@@ -81,6 +92,16 @@ $id = 1;
 
     	    mysqli_data_seek($result, 0);
 
+            while($row = mysqli_fetch_array($result)): {
+                $sum += $row['chamberDiceNum'];
+                //echo "sum= " . $sum . "\n";
+                if ($sum >= $rdmGen){
+                    break;
+                }
+                $i++;
+            }endwhile;
+
+/*
     	    while ($row = mysqli_fetch_array($result)): {
     		if($sum != $rdmGen){
     			$sum += $row['chamberDiceNum'];
@@ -89,8 +110,10 @@ $id = 1;
     		    else
     			break;
     	    }endwhile;
+*/
     	    $finalSQL = "select chamberDetails from chamber where chamberID = '$i'";
     	    $finalResult = mysqli_query($connection, $finalSQL);
+
     	    while($row = mysqli_fetch_array($finalResult)):{
                 $saDetail = $row['chamberDetails'];
             }endwhile;
@@ -102,22 +125,18 @@ $id = 1;
     	    $saDiceNum = 0;
     	    $sum = 0;
     	    $i = 1;
-    	    $count = 0;
     	    $saDetail = "";
     	    $sql = "select cExitDiceNum from chamberExits";
     	    $result = mysqli_query($connection, $sql);
     	    while ($row = mysqli_fetch_array($result)): {
     		    $saDiceNum += $row['cExitDiceNum'];
-    		    $count++;
     	    }endwhile;
     	    $rdmGen = rand(1,$saDiceNum);
             //echo $rdmGen . "\n" ;
     	    mysqli_data_seek($result, 0);
 
             while($row = mysqli_fetch_array($result)): {
-
                 $sum += $row['cExitDiceNum'];
-
                 //echo "sum= " . $sum . "\n";
                 if ($sum >= $rdmGen){
                     break;
