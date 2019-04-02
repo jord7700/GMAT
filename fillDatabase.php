@@ -18,7 +18,7 @@
                     (2, 'Continue straight 30ft., no doors or side passages'),
                     (1, 'Continue straight 20ft., door to the right, then an additional 10 ft. ahead'),
                     (1, 'Continue straight 20ft., door to the left, then an additional 10 ft. ahead'),
-                    (1, 'Continue stra ight 20ft.; passage ends in a door'),
+                    (1, 'Continue straight 20ft.; passage ends in a door'),
                     (2, 'Continue straight 20ft., side passage to the right. then an additional 10ft. ahead'),
                     (2, 'Continue straight 20ft., side passage to the left, then an additionallO ft. ahead'),
                     (1, 'Continue straight 20ft., comes to a dead end; 10 percent chance of a secret door'),
