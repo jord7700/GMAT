@@ -33,6 +33,7 @@ was used for testing, no longer needed but has helpful code for passing userpara
 
 //takes the dungeon data and adds it into the HTML view as new elements
     $scope.add = function(dungeonData){
+        document.getElementById('dungeon').innerHTML = "<ol id=\"add\"></ol>";
         var rooms = formatOutput(dungeonData);
         //console.log(dungeonData);
         var node = document.getElementById('add');
@@ -57,8 +58,7 @@ function formatOutput(dungeonData){
     var rooms = [];
 //    var rooms = [dungeonData["starting"], dungeonData["chamber1"]];
 
-    for (var i = 0; i < roomData.length; i++)
-    {
+    for (var i = 0; i < roomData.length; i++) {
         var obj = roomData[i];
         rooms.push(obj.data);
     }

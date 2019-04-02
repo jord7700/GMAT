@@ -36,21 +36,110 @@
                 while($row = mysqli_fetch_array($finalResult)):{
                     $saDetail = $row['saDetail'];
                 }endwhile;
+         $numDoors = $saDetail[strlen($saDetail) - 2];
     	 //echo $saDetail;
 
-//todo: change array to more proper json format (add id to simplify processing message)
+$id = 1;
     $array = array(
         array(
-            "id" => 1,
+            "id" => $id,
             "roomType" => "Starting Room",
             "data"=> $saDetail,
         )
     );
-//todo: create loop to add multiple chambers and other dungeon elements
-    array_push($array, array(
-        "id" => 2,
-        "roomType" => "chamber",
-        "data" =>"square room, 10ft wide, 2 way intersection",
-    ));
+    $id++;
+    //$numDoors = 1;
+    for( $i = 0; $i < $numDoors; $i++ ){
+        array_push($array, array(
+                "id" => $id,
+                "roomType" => "chamber",
+                "data" => getChamber(),
+                "chamberExits" => getChamberExits(),
+         ));
+         $id++;
+    }
+
+//todo: other dungeon elements
+
         return $array;
+    }
+
+
+    function getChamber(){
+            global $connection;
+    	    $saDiceNum = 0;
+    	    $sum = 0;
+    	    $i = 0;
+    	    $saDetail = "";
+    	    $sql = "select chamberDiceNum from chamber";
+    	    $result = mysqli_query($connection, $sql);
+    	    while ($row = mysqli_fetch_array($result)): {
+    		$saDiceNum += $row['chamberDiceNum'];
+    	    }endwhile;
+
+    	    $rdmGen = rand(1,$saDiceNum);
+
+    	    mysqli_data_seek($result, 0);
+
+    	    while ($row = mysqli_fetch_array($result)): {
+    		if($sum != $rdmGen){
+    			$sum += $row['chamberDiceNum'];
+    			$i++;
+    		    }
+    		    else
+    			break;
+    	    }endwhile;
+    	    $finalSQL = "select chamberDetails from chamber where chamberID = '$i'";
+    	    $finalResult = mysqli_query($connection, $finalSQL);
+    	    while($row = mysqli_fetch_array($finalResult)):{
+                $saDetail = $row['chamberDetails'];
+            }endwhile;
+            return $saDetail;
+    }
+
+    function getChamberExits(){
+            global $connection;
+    	    $saDiceNum = 0;
+    	    $sum = 0;
+    	    $i = 1;
+    	    $count = 0;
+    	    $saDetail = "";
+    	    $sql = "select cExitDiceNum from chamberExits";
+    	    $result = mysqli_query($connection, $sql);
+    	    while ($row = mysqli_fetch_array($result)): {
+    		    $saDiceNum += $row['cExitDiceNum'];
+    		    $count++;
+    	    }endwhile;
+    	    $rdmGen = rand(1,$saDiceNum);
+            //echo $rdmGen . "\n" ;
+    	    mysqli_data_seek($result, 0);
+
+            while($row = mysqli_fetch_array($result)): {
+
+                $sum += $row['cExitDiceNum'];
+
+                //echo "sum= " . $sum . "\n";
+                if ($sum >= $rdmGen){
+                    break;
+                }
+                $i++;
+            }endwhile;
+            //echo "END WIHLE\n";
+
+/*
+    	    while ($row = mysqli_fetch_array($result)): {
+    		if($sum != $rdmGen){
+    			$sum += $row['cExitDiceNum'];
+    			$i++;
+    		    }
+    		    else
+    			break;
+    	    }endwhile;
+*/
+    	    $finalSQL = "select cExitCount from chamberExits where cExitID = '$i'";
+    	    $finalResult = mysqli_query($connection, $finalSQL);
+    	    while($row = mysqli_fetch_array($finalResult)):{
+                $saDetail = $row['cExitCount'];
+            }endwhile;
+            return $saDetail;
     }
