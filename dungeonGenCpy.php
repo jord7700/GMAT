@@ -2,11 +2,12 @@
 
     include 'dbconnect.php';   
 
-
-
+    $array = array();
+    $globalNumRooms = 0;
 	$numDoors = 1;
 //generates dungeon, formats message in object array
 	function getStartingArea() {
+	global $array;
 	global $connection;
 	    $saDiceNum = 0;
         $sum = 0;
@@ -51,29 +52,64 @@
     	 //echo $saDetail;
 
 $id = 1;
-    $array = array(
-        array(
+    array_push($array, array(
             "id" => $id,
             "roomType" => "Starting Room",
             "data"=> $saDetail,
         )
     );
     $id++;
+    prepOutput($numDoors, $array);
+
     //$numDoors = 1;
+/*
     for( $i = 0; $i < $numDoors; $i++ ){
         array_push($array, array(
                 "id" => $id,
                 "roomType" => "chamber",
+                "passage" => "Continue straight 20ft.; passage ends in a door",
                 "data" => getChamber(),
                 "chamberExits" => getChamberExits(),
+                "leadsTo" => array(
+                    "id" => 1,
+                    "bleh" => "meh"),
          ));
          $id++;
+    }*/
+    return $array;
+        }
+
+    function prepOutput($numDoors, $array){
+            //echo $array[0]["roomType"] . "\n" . $numDoors . "\n";
+            global $globalNumRooms;
+            global $array;
+            $id = 1;
+            for( $i = 0; $i < $numDoors; $i++ ){
+            //echo "here\n";
+                $exits = getChamberExits();
+                $globalNumRooms++;
+                //echo $globalNumRooms . "\n";
+               if($globalNumRooms<=10){
+
+                    array_push($array, array(
+                        "id" => $id,
+                        "roomType" => "chamber",
+                        "passage" => "Continue straight 20ft.; passage ends in a door",
+                        "data" => getChamber(),
+                        "chamberExits" => $exits,
+                        "leadsTo" => array(
+                            prepOutput($exits, $array)),
+
+                     ));
+
+                     $id++;
+               }
+            }
+            return $array;
     }
 
 //todo: other dungeon elements
 
-        return $array;
-    }
 
 
     function getChamber(){
