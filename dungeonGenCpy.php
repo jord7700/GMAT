@@ -59,7 +59,7 @@ $id = 1;
         )
     );
     $id++;
-    prepOutput($numDoors, $array);
+    prepOutput($numDoors);
 
     //$numDoors = 1;
 /*
@@ -79,31 +79,42 @@ $id = 1;
     return $array;
         }
 
-    function prepOutput($numDoors, $array){
+    function prepOutput($numDoors){
             //echo $array[0]["roomType"] . "\n" . $numDoors . "\n";
             global $globalNumRooms;
             global $array;
-            $id = 1;
+	    $id = 2;
+	    $subId = 1;
+            $exits = 0;
             for( $i = 0; $i < $numDoors; $i++ ){
             //echo "here\n";
-                $exits = getChamberExits();
+
                 $globalNumRooms++;
                 //echo $globalNumRooms . "\n";
                if($globalNumRooms<=10){
-
+                    $exits = getChamberExits();
                     array_push($array, array(
                         "id" => $id,
                         "roomType" => "chamber",
                         "passage" => "Continue straight 20ft.; passage ends in a door",
                         "data" => getChamber(),
                         "chamberExits" => $exits,
-                        "leadsTo" => array(
-                            prepOutput($exits, $array)),
+                    ));
 
-                     ));
-
-                     $id++;
-               }
+	       }
+		while($exits > 0){
+                    array_push($array, array(
+                        "id" => $id . "." . $subId,
+                        "roomType" => "chamber",
+                        "passage" => "Continue straight 20ft.; passage ends in a door",
+                        "data" => getChamber(),
+                    ));
+		    $subId++;
+		    $exits--;
+		    	
+		}
+		$subId = 1;
+		$id++;
             }
             return $array;
     }
