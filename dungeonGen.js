@@ -37,19 +37,27 @@ was used for testing, no longer needed but has helpful code for passing userpara
 		var roomData = dungeonData;
 		//console.log(dungeonData);
 		var node = document.getElementById('add');
-		var message = '<li>' + roomData[0].data + '</li>';
+		var message = '<li>' + roomData[0].id + ') ' + roomData[0].data + '</li>';
 		message = message + '<ul>';
 		
 		for (var i=1; i < roomData.length; i++){
-			var obj = roomData[i];	
-			message = message + '<li>' + obj.passage + 
-				'leads to ' + i +'</li>';//passage
+			var obj = roomData[i];
+			if((obj.id).length != 3){
+				message = message + '<li>' + obj.passage + 
+					'leads to ' + obj.id +'</li>';//passage
+			}
 		}
 
 		for(var i=1; i < roomData.length; i++){
-			var obj = roomData[i];	
-			message = message + '</ul>' + '<li>' + i + ') ' 
-				+ obj.data + '</li>' + '<ul>';//chamber
+			var obj = roomData[i];
+			console.log((obj.id).length);
+			if((obj.id).length >= 3){
+				message = message + '</ul>' + '<ul>' + '<li>' + obj.id + ') ' 
+					+ obj.data + '</li>' + '</ul>' + '<ul>';//chamber
+			}else {
+				message = message + '</ul>' + '<li>' + obj.id + ') ' 
+					+ obj.data + '</li>' + '<ul>';//chamber
+			}
 		}
 
 		message = message + '</ul>';
