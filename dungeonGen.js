@@ -2,21 +2,21 @@ angular.module('myApp').controller('dungeonCtrl', function($scope,fileReader, $h
 		$scope.postResults = "";
 		var userParams = {};
 		$scope.prePostResults = "";
-		/*
+
+/*
 This will be used for user params
 
-	S$scope.sizes = ["Small", "Medium", "Large"];
-	$scope.environments = ["Grass", "Cave", "Hills"];
-	*/
+$scope.sizes = ["Small", "Medium", "Large"];
+$scope.environments = ["Grass", "Cave", "Hills"];
 
-		//takes user input if needed, calls php dungeon generator and outputs dungeon
-		$scope.genDungeon = function(){
-				$http.post('dungeonScript.php', userParams)
-						.then(function(response){
-								$scope.add(response.data);
-								//$scope.postResults = response.data;
-								//$scope.postResults  += parseInt(response.data) + 3;
-						});
+*/
+
+	//takes user input if needed, calls php dungeon generator and outputs dungeon
+	$scope.genDungeon = function(){
+		$http.post('dungeonScript.php', userParams)
+			.then(function(response){
+				$scope.add(response.data);
+			});
 
 		};
 
@@ -31,7 +31,7 @@ was used for testing, no longer needed but has helpful code for passing userpara
 	};
 	*/
 
-		//takes the dungeon data and adds it into the HTML view as new elements
+	//takes the dungeon data and adds it into the HTML view as new elements
 	$scope.add = function(dungeonData){
 		document.getElementById('dungeon').innerHTML = "<ol id=\"add\"></ol>";
 		var roomData = dungeonData;
@@ -40,11 +40,16 @@ was used for testing, no longer needed but has helpful code for passing userpara
 		var message = '<li>' + roomData[0].data + '</li>';
 		message = message + '<ul>';
 		
-		for(var i=roomData.length-1; i >= 1; i--){
+		for (var i=1; i < roomData.length; i++){
 			var obj = roomData[i];	
-			
-			message = message + '</ul>'  + '<li>' + obj.data + '</li>' + '<ul>';
-			message = message + '<li>' + obj.passage + '</li>';
+			message = message + '<li>' + obj.passage + 
+				'leads to ' + i +'</li>';//passage
+		}
+
+		for(var i=1; i < roomData.length; i++){
+			var obj = roomData[i];	
+			message = message + '</ul>' + '<li>' + i + ') ' 
+				+ obj.data + '</li>' + '<ul>';//chamber
 		}
 
 		message = message + '</ul>';
