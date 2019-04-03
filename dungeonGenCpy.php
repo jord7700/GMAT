@@ -96,7 +96,7 @@ $id = 1;
                     array_push($array, array(
                         "id" => $id,
                         "roomType" => "chamber",
-                        "passage" => "Continue straight 20ft.; passage ends in a door",
+                        "passage" => getPassage(),
                         "data" => getChamber(),
                         "chamberExits" => $exits,
                     ));
@@ -106,7 +106,7 @@ $id = 1;
                     array_push($array, array(
                         "id" => $id . "." . $subId,
                         "roomType" => "chamber",
-                        "passage" => "Continue straight 20ft.; passage ends in a door",
+                        "passage" => getPassage(),
                         "data" => getChamber(),
                     ));
 		    $subId++;
@@ -209,3 +209,48 @@ $id = 1;
             }endwhile;
             return $saDetail;
     }
+	
+	function getPassage(){
+		 global $connection;
+    	    $saDiceNum = 0;
+    	    $sum = 0;
+    	    $i = 1;
+    	    $saDetail = "";
+    	    $sql = "select passageDiceNum from passage";
+    	    $result = mysqli_query($connection, $sql);
+    	    while ($row = mysqli_fetch_array($result)): {
+    		$saDiceNum += $row['passageDiceNum'];
+    	    }endwhile;
+
+    	    $rdmGen = rand(1,$saDiceNum);
+
+    	    mysqli_data_seek($result, 0);
+
+            while($row = mysqli_fetch_array($result)): {
+                $sum += $row['passageDiceNum'];
+                //echo "sum= " . $sum . "\n";
+                if ($sum >= $rdmGen){
+                    break;
+                }
+                $i++;
+            }endwhile;
+
+/*
+    	    while ($row = mysqli_fetch_array($result)): {
+    		if($sum != $rdmGen){
+    			$sum += $row['chamberDiceNum'];
+    			$i++;
+    		    }
+    		    else
+    			break;
+    	    }endwhile;
+*/
+    	    $finalSQL = "select passageDetails from passage where passageID = '$i'";
+    	    $finalResult = mysqli_query($connection, $finalSQL);
+
+    	    while($row = mysqli_fetch_array($finalResult)):{
+                $saDetail = $row['passageDetails'];
+            }endwhile;
+            return $saDetail;
+	}
+	
