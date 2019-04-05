@@ -59,7 +59,7 @@ $id = 1;
         )
     );
     $id++;
-    prepOutput($numDoors, $array);
+    prepOutput($numDoors);
 
     //$numDoors = 1;
 /*
@@ -79,31 +79,42 @@ $id = 1;
     return $array;
         }
 
-    function prepOutput($numDoors, $array){
+    function prepOutput($numDoors){
             //echo $array[0]["roomType"] . "\n" . $numDoors . "\n";
             global $globalNumRooms;
             global $array;
-            $id = 1;
+	    $id = 2;
+	    $subId = 1;
+            $exits = 0;
             for( $i = 0; $i < $numDoors; $i++ ){
             //echo "here\n";
-                $exits = getChamberExits();
+
                 $globalNumRooms++;
                 //echo $globalNumRooms . "\n";
                if($globalNumRooms<=10){
-
+                    $exits = getChamberExits();
                     array_push($array, array(
                         "id" => $id,
                         "roomType" => "chamber",
-                        "passage" => "Continue straight 20ft.; passage ends in a door",
+                        "passage" => getPassage(),
                         "data" => getChamber(),
                         "chamberExits" => $exits,
-                        "leadsTo" => array(
-                            prepOutput($exits, $array)),
+                    ));
 
-                     ));
-
-                     $id++;
-               }
+	       }
+		while($exits > 0){
+                    array_push($array, array(
+                        "id" => $id . "." . $subId,
+                        "roomType" => "chamber",
+                        "passage" => getPassage(),
+                        "data" => getChamber(),
+                    ));
+		    $subId++;
+		    $exits--;
+		    	
+		}
+		$subId = 1;
+		$id++;
             }
             return $array;
     }
@@ -198,3 +209,48 @@ $id = 1;
             }endwhile;
             return $saDetail;
     }
+	
+	function getPassage(){
+		 global $connection;
+    	    $saDiceNum = 0;
+    	    $sum = 0;
+    	    $i = 1;
+    	    $saDetail = "";
+    	    $sql = "select passageDiceNum from passage";
+    	    $result = mysqli_query($connection, $sql);
+    	    while ($row = mysqli_fetch_array($result)): {
+    		$saDiceNum += $row['passageDiceNum'];
+    	    }endwhile;
+
+    	    $rdmGen = rand(1,$saDiceNum);
+
+    	    mysqli_data_seek($result, 0);
+
+            while($row = mysqli_fetch_array($result)): {
+                $sum += $row['passageDiceNum'];
+                //echo "sum= " . $sum . "\n";
+                if ($sum >= $rdmGen){
+                    break;
+                }
+                $i++;
+            }endwhile;
+
+/*
+    	    while ($row = mysqli_fetch_array($result)): {
+    		if($sum != $rdmGen){
+    			$sum += $row['chamberDiceNum'];
+    			$i++;
+    		    }
+    		    else
+    			break;
+    	    }endwhile;
+*/
+    	    $finalSQL = "select passageDetails from passage where passageID = '$i'";
+    	    $finalResult = mysqli_query($connection, $finalSQL);
+
+    	    while($row = mysqli_fetch_array($finalResult)):{
+                $saDetail = $row['passageDetails'];
+            }endwhile;
+            return $saDetail;
+	}
+	

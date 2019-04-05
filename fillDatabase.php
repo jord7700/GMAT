@@ -14,17 +14,17 @@
                     (1,'Passage , 10ft. wide; four-way intersection (4)')";
                     
     $passage = "insert into passage (passageDiceNum, passageDetails) values
-                    (2, 'Continue straight 30ft., no doors or side passages'),
-                    (1, 'Continue straight 20ft., door to the right, then an additional 10 ft. ahead'),
-                    (1, 'Continue straight 20ft., door to the left, then an additional 10 ft. ahead'),
-                    (1, 'Continue straight 20ft.; passage ends in a door'),
-                    (2, 'Continue straight 20ft., side passage to the right. then an additional 10ft. ahead'),
-                    (2, 'Continue straight 20ft., side passage to the left, then an additionallO ft. ahead'),
-                    (1, 'Continue straight 20ft., comes to a dead end; 10 percent chance of a secret door'),
-                    (2, 'Continue straight 20ft., then the passage turns left and continues 10 ft.'),
-                    (2, 'Continue straight 20ft., then the passage turns right and continues 10ft.'),
-                    (5, 'Chamber (roll on the Chamber table'),
-                    (1, 'Stairs* (roll on the Stairs table)')";
+                    (2, 'Continue straight 30ft., no doors or side passages '),
+                    (1, 'Continue straight 20ft., door to the right, then an additional 10 ft. ahead '),
+                    (1, 'Continue straight 20ft., door to the left, then an additional 10 ft. ahead '),
+                    (1, 'Continue straight 20ft.; passage ends in a door '),
+                    (2, 'Continue straight 20ft., side passage to the right. then an additional 10ft. ahead '),
+                    (2, 'Continue straight 20ft., side passage to the left, then an additionallO ft. ahead '),
+                    (1, 'Continue straight 20ft., comes to a dead end; 10 percent chance of a secret door '),
+                    (2, 'Continue straight 20ft., then the passage turns left and continues 10 ft. '),
+                    (2, 'Continue straight 20ft., then the passage turns right and continues 10ft.' )";
+                    //(5, 'Chamber (roll on the Chamber table) '),
+                    //(1, 'Stairs* (roll on the Stairs table) ')";
                     
     $doorType = "insert into doorType (dTypeDiceNum, dTypeDetail) values
                     (10, 'Wooden'),
