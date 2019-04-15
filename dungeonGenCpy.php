@@ -4,15 +4,17 @@
 
     $array = array();
     $globalNumRooms = 0;
-	$numDoors = 1;
+    $numDoors = 1;
+    $gid = 0;
 //generates dungeon, formats message in object array
 	function getStartingArea() {
 	global $array;
 	global $connection;
+	global $gid;
 	    $saDiceNum = 0;
         $sum = 0;
         $i = 1;
-        $saDetail = "";
+	$saDetail = "";
         $sql = "select saDiceNum from startingArea";
         $result = mysqli_query($connection, $sql);
         $numDoors = 0;
@@ -46,8 +48,9 @@
             $finalSQL = "select saDetail from startingArea where saID = '$i'";
             $finalResult = mysqli_query($connection, $finalSQL);
                 while($row = mysqli_fetch_array($finalResult)):{
-                    $saDetail = $row['saDetail'];
-                }endwhile;
+			$saDetail = $row['saDetail'];
+		}endwhile;
+	    $gid = $i;
          $numDoors = $saDetail[strlen($saDetail) - 2];
     	 //echo $saDetail;
 
@@ -55,7 +58,8 @@ $id = 1;
     array_push($array, array(
             "id" => $id,
             "roomType" => "Starting Room",
-            "data"=> $saDetail,
+	    "data"=> $saDetail,
+	    "gid" => $gid,
         )
     );
     $id++;
@@ -82,7 +86,8 @@ $id = 1;
     function prepOutput($numDoors){
             //echo $array[0]["roomType"] . "\n" . $numDoors . "\n";
             global $globalNumRooms;
-            global $array;
+	    global $array;
+	    global $gid;
 	    $id = 2;
 	    $subId = 1;
             $exits = 0;
@@ -97,7 +102,8 @@ $id = 1;
                         "id" => $id,
                         "roomType" => "chamber",
                         "passage" => getPassage(),
-                        "data" => getChamber(),
+			"data" => getChamber(),
+			"gid" => $gid,
                         "chamberExits" => $exits,
                     ));
 
@@ -107,7 +113,8 @@ $id = 1;
                         "id" => $id . "." . $subId,
                         "roomType" => "chamber",
                         "passage" => getPassage(),
-                        "data" => getChamber(),
+			"data" => getChamber(),
+			"gid" => $gid,
                     ));
 		    $subId++;
 		    $exits--;
@@ -124,7 +131,8 @@ $id = 1;
 
 
     function getChamber(){
-            global $connection;
+	    global $connection;
+	    global $gid;
     	    $saDiceNum = 0;
     	    $sum = 0;
     	    $i = 1;
@@ -162,8 +170,9 @@ $id = 1;
     	    $finalResult = mysqli_query($connection, $finalSQL);
 
     	    while($row = mysqli_fetch_array($finalResult)):{
-                $saDetail = $row['chamberDetails'];
-            }endwhile;
+		    $saDetail = $row['chamberDetails'];
+	    }endwhile;
+	    $gid = $i;
             return $saDetail;
     }
 

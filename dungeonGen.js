@@ -50,7 +50,7 @@ was used for testing, no longer needed but has helpful code for passing userpara
 
 		for(var i=1; i < roomData.length; i++){
 			var obj = roomData[i];
-			console.log((obj.id).length);
+			//console.log((obj.id).length);
 			if((obj.id).length >= 3){
 				message = message + '</ul>' + '<ul>' + '<li>' + obj.id + ') ' 
 					+ obj.data + '</li>' + '</ul>' + '<ul>';//chamber
@@ -63,6 +63,58 @@ was used for testing, no longer needed but has helpful code for passing userpara
 		message = message + '</ul>';
 		node.insertAdjacentHTML('afterend', message);
 
+
+		//where graphics start
+		var height = 300;
+		var width  = 700;
+		var objHeight = height/2;
+		var objWidth = 0;
+		var newNode = document.getElementById('graphics');
+		var message2 = '<canvas id="myCanvas" width="' + width + 
+			'" height="' + height + '"style="border:1px solid;">';
+		message2 = message2 + 'abba</canvas>';
+		console.log(message2);
+		newNode.insertAdjacentHTML('afterend', message2);
+		newNode = document.getElementById("myCanvas");
+		var c = newNode.getContext("2d");
+		var img = new Image();
+		var images = [];
+		var iNum=0;
+		img.onload = function(){
+			//c.fillRect(50, 50, 50, 50);
+			c.drawImage(img, objWidth, 150);
+		};
+		img.src= './png/chambers/chamber1.png';
+		for(var i=1; i < roomData.length; i++){
+			var img1 = new Image();
+			images.push(img1);
+			var obj=roomData[i];
+			switch(obj.gid){
+				case 1:
+					img1.src = './png/chambers/chamber1.png';
+				default:
+					img1.src = './png/chambers/chamber1.png';
+
+			}
+		}
+		
+		img1.onload = function(){
+				for(var n=1; n<roomData.length; n++){
+					var obj=roomData[n];
+					console.log(obj.id);
+					if((obj.id).length != 3){
+						objWidth+=60;
+						c.drawImage(images[iNum], objWidth, objHeight);
+						iNum++;
+					} else{
+						c.drawImage(images[iNum], objWidth, objHeight+60);
+						objWidth+=60;
+						iNum++;
+					}
+						
+				}
+			};
+		
 		};
 });
 
