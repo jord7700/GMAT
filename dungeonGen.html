@@ -7,14 +7,18 @@
 </head>
 <body>
     <div ng-controller="dungeonCtrl">
-        <select ng-model="size" ng-options="item for item in sizes" ng-change="justChanged()">
-        </select>
-        <select ng-model="environment" ng-options="item for item in environments" ng-change="justChanged()">
-        </select>
+        <!--
+		<select ng-model="size" ng-options="item for item in sizes" ng-change="justChanged()">
+	        </select>
+	        <select ng-model="environment" ng-options="item for item in environments" ng-change="justChanged()">
+	        </select>
+	-->
         <button ng-click="genDungeon()">Gen Dungeon</button>
         <p>{{postResults}}</p>
         <div id="dungeon">
             <ol id="add"></ol>
+        </div>
+        <div id="graphics">
         </div>
     </div>
 </body>
