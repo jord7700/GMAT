@@ -1,9 +1,9 @@
 angular.module('myApp').controller('dungeonCtrl', function($scope,fileReader, $http){
-		$scope.postResults = "";
-		var userParams = {};
-		$scope.prePostResults = "";
+	$scope.postResults = "";
+	var userParams = {};
+	$scope.prePostResults = "";
 
-/*
+	/*
 This will be used for user params
 
 $scope.sizes = ["Small", "Medium", "Large"];
@@ -18,9 +18,9 @@ $scope.environments = ["Grass", "Cave", "Hills"];
 				$scope.add(response.data);
 			});
 
-		};
+	};
 
-		/*
+	/*
 was used for testing, no longer needed but has helpful code for passing userparams
 	$scope.justChanged = function(){
 		$scope.postResults = $scope.selected;
@@ -39,7 +39,7 @@ was used for testing, no longer needed but has helpful code for passing userpara
 		var node = document.getElementById('add');
 		var message = '<li>' + roomData[0].id + ') ' + roomData[0].data + '</li>';
 		message = message + '<ul>';
-		
+
 		for (var i=1; i < roomData.length; i++){
 			var obj = roomData[i];
 			if((obj.id).length != 3){
@@ -65,15 +65,15 @@ was used for testing, no longer needed but has helpful code for passing userpara
 
 
 		//where graphics start
-		var height = 300;
+		var height = 700;
 		var width  = 700;
-		var objHeight = height/2;
-		var objWidth = 0;
+		var objHeight = 350;
+		var objWidth = 350;
 		var newNode = document.getElementById('graphics');
 		var message2 = '<canvas id="myCanvas" width="' + width + 
 			'" height="' + height + '"style="border:1px solid;">';
 		message2 = message2 + 'abba</canvas>';
-		console.log(message2);
+		//console.log(message2);
 		newNode.insertAdjacentHTML('afterend', message2);
 		newNode = document.getElementById("myCanvas");
 		var c = newNode.getContext("2d");
@@ -82,9 +82,9 @@ was used for testing, no longer needed but has helpful code for passing userpara
 		var iNum=0;
 		img.onload = function(){
 			//c.fillRect(50, 50, 50, 50);
-			c.drawImage(img, objWidth, 150);
+			c.drawImage(img, objHeight, objWidth);
 		};
-		img.src= './png/chambers/chamber1.png';
+		img.src= './png/chambers/chamberStart.png';
 		for(var i=1; i < roomData.length; i++){
 			var img1 = new Image();
 			images.push(img1);
@@ -97,25 +97,72 @@ was used for testing, no longer needed but has helpful code for passing userpara
 
 			}
 		}
-		
+
 		img1.onload = function(){
-				for(var n=1; n<roomData.length; n++){
-					var obj=roomData[n];
-					console.log(obj.id);
-					if((obj.id).length != 3){
-						objWidth+=60;
-						c.drawImage(images[iNum], objWidth, objHeight);
-						iNum++;
-					} else{
-						c.drawImage(images[iNum], objWidth, objHeight+60);
-						objWidth+=60;
-						iNum++;
+			var dir = 1;
+			for(var n=1; n<roomData.length; n++){
+				var obj=roomData[n];
+				console.log(obj.id + ", " + dir);
+				if((obj.id).length != 3){
+					objWidth = 350;
+					objHeight = 350;
+					switch (dir){
+						case 1:
+							objHeight+=100;
+							c.drawImage(images[iNum], objWidth, objHeight);
+							iNum++;
+							dir++;
+							break;
+						case 2:
+							objWidth+=100;
+							c.drawImage(images[iNum], objWidth, objHeight);
+							iNum++;
+							dir++;
+							break;
+						case 3:
+							objHeight-=100;
+							c.drawImage(images[iNum], objWidth, objHeight);
+							iNum++;
+							dir++;
+							break;
+						case 4:
+							objWidth-=100;
+							c.drawImage(images[iNum], objWidth, objHeight);
+							iNum++;
+							dir++;
+							break;
+						default:
+							console.log("how the hell did you get here");
 					}
-						
+				} else{
+					switch (dir){
+						case 2:
+							objHeight+=100;
+							c.drawImage(images[iNum], objWidth, objHeight);
+							iNum++;
+							break;
+						case 3:
+							objWidth+=100;
+							c.drawImage(images[iNum], objWidth, objHeight);
+							iNum++;
+							break;
+						case 4:
+							objHeight-=100;
+							c.drawImage(images[iNum], objWidth, objHeight);
+							iNum++;
+							break;
+						case 5:
+							objWidth-=100;
+							c.drawImage(images[iNum], objWidth, objHeight);
+							iNum++;
+							break;
+						default:
+							console.log("how the hell did you get here 2, electric boogaloo");
+					}
 				}
-			};
-		
+			}
 		};
+	};
 });
 
 /*
