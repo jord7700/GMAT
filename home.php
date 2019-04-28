@@ -21,7 +21,7 @@
 
 <div class="wrap"  ng-controller="myCtrl">
 
-    <div class="options">
+    <!--<div class="options">
         <select class = "optionsTabs">
             <option value = "file">File</option>
             <option value = "view">View</option>
@@ -30,7 +30,7 @@
             <option value = "exit">Exit</option>
         </select>
 
-    </div>
+    </div>-->
     
     <div class="menu" id = "menuSideNav">
         <table>
