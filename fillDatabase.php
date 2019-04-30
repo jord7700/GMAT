@@ -12,7 +12,7 @@
                     (1,'Circle, 40ft. diameter; one passage in each cardinal direction; well in middle of room might lead down to lower level (4)'),
                     (1,'Square, 20 x 20ft.; door on two walls, passage on third wall, secret door on fourth wall (4)'),
                     (1,'Passage, 10 ft. wide; T intersection (2)'),
-                    (1,'Passage , 10ft. wide; four-way intersection (4)')";
+                    (1,'Passage, 10ft. wide; four-way intersection (4)')";
                     
     $passage = "insert into passage (passageDiceNum, passageDetails) values
                     (2, 'Continue straight 30ft., no doors or side passages '),
