@@ -18,6 +18,7 @@
 	<!-- Custom Dice Input Field -->
 	<input type="text" id="diceCustomInput" ng-model="diceValue" placeholder="Enter Custom Die (Ex. 4d8)">
 	<button ng-click="customDieRoll(diceValue)">Roll!</button>
+    <button ng-click = "clearResults()">Clear</button>
 	
 	<!-- Display Stage for Results -->
 	<p class = "result">{{results}}</p> <br/>

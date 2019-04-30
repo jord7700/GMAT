@@ -22,7 +22,14 @@ angular.module('myApp').controller('diceCtrl', function($scope, fileReader, $htt
         numDiceRolled++;
         $scope.results = diceResults.join("");
     }
-
+ 
+    //Clears results and resets to 0!
+    $scope.clearResults = function(){
+        $scope.results = 0;
+        numDiceRolled = 0;
+        diceResults = [];
+        
+    }
     $scope.customDieRoll = function(customDiceValue) {
         /*  Takes a custom input from the user, parses it, and rolls dice to fit
          * the specifications of the user.
@@ -69,7 +76,7 @@ angular.module('myApp').controller('diceCtrl', function($scope, fileReader, $htt
         }
         numDiceRolled++;
         $scope.results = diceResults.join("");
-
+        
         // Clearing out the variables we use, so that we may use them again.
         customDiceSplit = false;
         customDieNumber = [];
