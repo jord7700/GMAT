@@ -1,6 +1,5 @@
 <?php
 
-    include 'dbconnect.php';
 
     $startingArea = "insert into startingArea (saDiceNum, saDetail) values 
                     (1,'Square, 20 x 20ft.; passage on each wall (2)'),
@@ -78,6 +77,6 @@
         
     $count++;
     }
-    mysqli_close($connection);
+
     
 ?>

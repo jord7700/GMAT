@@ -59,7 +59,6 @@
 <!-- get chambers -->
 
 <?php
-	
 	$numDoors = $saDetail[strlen($saDetail) - 2];
 	//echo $numDoors;
 ?>
