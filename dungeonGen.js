@@ -92,8 +92,56 @@ was used for testing, no longer needed but has helpful code for passing userpara
 			switch(obj.gid){
 				case 1:
 					img1.src = './png/chambers/chamber1.png';
+					console.log(obj.gid);
+					break;
+				case 2:
+					img1.src = './png/chambers/chamber2.png';
+					console.log(obj.gid);
+					break;
+				case 3:
+					img1.src = './png/chambers/chamber3.png';
+					console.log(obj.gid);
+					break;
+				case 4:
+					img1.src = './png/chambers/chamber4.png';
+					console.log(obj.gid);
+					break;
+				case 5:
+					img1.src = './png/chambers/chamber5.png';
+					console.log(obj.gid);
+					break;
+				case 6:
+					img1.src = './png/chambers/chamber6.png';
+					console.log(obj.gid);
+					break;
+				case 7:
+					img1.src = './png/chambers/chamber7.png';
+					console.log(obj.gid);
+					break;
+				case 8:
+					img1.src = './png/chambers/chamber8.png';
+					console.log(obj.gid);
+					break;
+				case 9:
+					img1.src = './png/chambers/chamber9.png';
+					console.log(obj.gid);
+					break;
+				case 10:
+					img1.src = './png/chambers/chamber10.png';
+					console.log(obj.gid);
+					break;
+				case 11:
+					img1.src = './png/chambers/chamber11.png';
+					console.log(obj.gid);
+					break;
+				case 12:
+					img1.src = './png/chambers/chamber12.png';
+					console.log(obj.gid);
+					break;
+
 				default:
 					img1.src = './png/chambers/chamber1.png';
+					console.log("default");
 
 			}
 		}
