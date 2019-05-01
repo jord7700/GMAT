@@ -74,7 +74,7 @@ was used for testing, no longer needed but has helpful code for passing userpara
 			'" height="' + height + '"style="border:1px solid;">';
 		message2 = message2 + 'abba</canvas>';
 		//console.log(message2);
-		newNode.insertAdjacentHTML('afterend', message2);
+		newNode.innerHTML = message2;
 		newNode = document.getElementById("myCanvas");
 		var c = newNode.getContext("2d");
 		var img = new Image();
