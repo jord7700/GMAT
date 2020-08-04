@@ -6,7 +6,7 @@ try:
     db = mysql.connector.connect(host="localhost",
                        user="Kreutz",
                        db="gmat",
-                           passwd="#Mustangs18PennState18")
+                           passwd="")
 
     cur = db.cursor()
 
